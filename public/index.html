@@ -1229,7 +1229,7 @@
       padding: 40px 0;
       background: var(--gray-900);
       color: rgba(255, 255, 255, 0.5);
-      text-align: center;
+      text-align: left;
     }
 
     .footer-inner {
@@ -1240,13 +1240,9 @@
       gap: 24px;
     }
 
-    .footer-logo {
-      height: 32px;
-      opacity: 0.8;
-    }
-
     .footer-social {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
     }
 
@@ -1259,14 +1255,14 @@
     .footer-social a:hover { color: var(--white); }
 
     .footer-copy {
-      font-size: 0.8rem;
-      width: 100%;
-      text-align: center;
-      margin-top: 16px;
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: left;
     }
 
     @media (max-width: 640px) {
-      .footer-inner { justify-content: center; }
+      .footer-inner { align-items: flex-start; }
     }
   </style>
 </head>
@@ -1305,7 +1301,7 @@
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-tagline" data-es="HidroBio &mdash; Horticultura de Precisi&oacute;n" data-en="HidroBio &mdash; Precision Horticulture">HidroBio &mdash; Horticultura de Precisión</p>
+      <p class="hero-tagline" data-es="Horticultura de Precisi&oacute;n" data-en="HidroBio &mdash; Precision Horticulture">Horticultura de Precisión</p>
       <h1 class="hero-title" data-es="Cultivamos el futuro de la alimentaci&oacute;n en Paraguay" data-en="Growing the future of food in Paraguay">Cultivamos el futuro de la alimentación en Paraguay</h1>
       <p class="hero-sub" data-es="Productos hidrop&oacute;nicos frescos, sin suelo, sin pesticidas. AgroPark Fase 1: 20 hect&aacute;reas de agricultura protegida en marcha." data-en="Fresh hydroponic produce, no soil, no pesticides. AgroPark Phase 1: 20 hectares of protected agriculture underway.">Productos hidropónicos frescos, sin suelo, sin pesticidas. AgroPark Fase 1: 20 hectáreas de agricultura protegida en marcha.</p>
       <div class="hero-buttons">
@@ -1715,14 +1711,13 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
-        <img src="/assets/logo-white.svg" alt="HidroBio" class="footer-logo">
+        <p class="footer-copy">&copy; 2026 HidroBio</p>
         <div class="footer-social">
           <a href="https://instagram.com/hidrobiopy" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.facebook.com/hidrobiopy" target="_blank" rel="noopener">Facebook</a>
           <a href="https://www.linkedin.com/company/hidrobio" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://www.youtube.com/@HidroBio" target="_blank" rel="noopener">YouTube</a>
         </div>
-        <p class="footer-copy" data-es="&copy; 2026 HidroBio S.A. &mdash; Hecho en Paraguay" data-en="&copy; 2026 HidroBio S.A. &mdash; Made in Paraguay">&copy; 2026 HidroBio S.A. — Hecho en Paraguay</p>
       </div>
     </div>
   </footer>
