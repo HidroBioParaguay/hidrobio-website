@@ -446,47 +446,86 @@
       font-weight: 500;
     }
 
-    /* Credentials */
+    /* Recognition and partnerships */
     .credentials {
-      display: flex;
-      gap: 40px;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 48px;
-      padding: 32px;
-      background: var(--gray-50);
-      border-radius: 16px;
+      margin-top: 64px;
+    }
+
+    .credentials-heading {
+      font-family: var(--font);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--gray-900);
+      margin-bottom: 40px;
+    }
+
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 48px;
+      row-gap: 0;
     }
 
     .credential-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      align-items: start;
+      gap: 24px;
+      padding: 32px 0;
+      border-top: 1px solid var(--gray-200);
+      min-width: 0;
     }
 
     .credential-item img {
-      height: 180px;
-      width: auto;
+      width: 140px;
+      height: 112px;
       object-fit: contain;
-      border-radius: 8px;
+      border-radius: 6px;
       filter: grayscale(20%);
       transition: filter 0.3s ease;
     }
-    .credential-item:hover img {
-      filter: grayscale(0%);
+
+    .credential-item:hover img { filter: grayscale(0%); }
+    .credential-copy { min-width: 0; }
+
+    .credential-title {
+      font-family: var(--font);
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--gray-900);
+      margin-bottom: 12px;
     }
 
-    .credential-item span {
-      font-size: 0.8rem;
+    .credential-title a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--gray-300);
+      text-underline-offset: 5px;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+
+    .credential-title a:hover {
+      color: var(--green-primary);
+      text-decoration-color: var(--green-primary);
+    }
+
+    .credential-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      font-weight: 400;
       color: var(--gray-700);
-      font-weight: 500;
-      text-align: center;
-      max-width: 200px;
-      line-height: 1.4;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    }
+
+    @media (max-width: 900px) {
+      .credentials-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .credential-item { grid-template-columns: 88px minmax(0, 1fr); gap: 20px; padding: 28px 0; }
+      .credential-item img { width: 88px; height: 88px; }
+      .credential-title { font-size: 1.1rem; }
     }
 
     @media (max-width: 768px) {
@@ -747,52 +786,14 @@
       line-height: 1.8;
     }
 
-    .instructor-row {
-      display: flex;
-      gap: 24px;
-      margin-top: 32px;
-    }
-
-    .instructor {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .instructor img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .instructor-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-    .instructor-role {
-      font-size: 0.8rem;
-      color: var(--gray-500);
-    }
-
     .academy-cta {
       margin-top: 32px;
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
     }
-    .academy-cta .btn-outline {
-      color: var(--green-primary);
-      border-color: var(--green-primary);
-    }
-    .academy-cta .btn-outline:hover {
-      background: var(--green-light);
-      border-color: var(--green-dark);
-    }
-
     @media (max-width: 768px) {
       .academy-grid { grid-template-columns: 1fr; gap: 40px; }
-      .instructor-row { flex-direction: column; }
     }
 
     /* =============================================
@@ -806,44 +807,6 @@
     .press-header {
       text-align: center;
       margin-bottom: 48px;
-    }
-
-    /* Awards row */
-    .awards-row {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-      margin-bottom: 64px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid var(--gray-200);
-    }
-
-    .award-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      max-width: 160px;
-      text-align: center;
-    }
-
-    .award-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: 800;
-    }
-
-    .award-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--gray-700);
-      line-height: 1.3;
     }
 
     /* Press cards */
@@ -1392,22 +1355,37 @@
         </div>
       </div>
 
-      <div class="credentials fade-up">
-        <div class="credential-item">
-          <img src="/photos/marca-pais-certificate-digital.jpg" alt="Marca País Paraguay">
-          <span data-es="Marca Pa&iacute;s Paraguay &mdash; Certificaci&oacute;n nacional de calidad y trazabilidad (REDIEX, 2025)" data-en="Marca Pa&iacute;s Paraguay &mdash; National quality and traceability certification (REDIEX, 2025)">Marca Pa&iacute;s Paraguay &mdash; Certificaci&oacute;n nacional de calidad y trazabilidad (REDIEX, 2025)</span>
-        </div>
-        <div class="credential-item">
-          <img src="/photos/premio-ahk-ceremony.jpeg" alt="Premio AHK 2025">
-          <span data-es="C&aacute;mara Alemana de Comercio &mdash; 1er Puesto, Empresa M&aacute;s Sostenible del Paraguay (2025)" data-en="German Chamber of Commerce &mdash; 1st Place, Most Sustainable Company in Paraguay (2025)">C&aacute;mara Alemana de Comercio &mdash; 1er Puesto, Empresa M&aacute;s Sostenible del Paraguay (2025)</span>
-        </div>
-        <div class="credential-item">
-          <img src="/photos/sello-verde-ceremony.jpg" alt="Sello Verde Paraguay">
-          <span data-es="Sello Verde &mdash; Certificaci&oacute;n ambiental de la Uni&oacute;n Industrial Paraguaya (2025)" data-en="Sello Verde &mdash; Environmental certification by the Paraguayan Industrial Union (2025)">Sello Verde &mdash; Certificaci&oacute;n ambiental de la Uni&oacute;n Industrial Paraguaya (2025)</span>
-        </div>
-        <div class="credential-item">
-          <img src="/photos/convenio-usc.jpg" alt="Universidad San Carlos">
-          <span data-es="Universidad San Carlos &mdash; Convenio de investigaci&oacute;n y formaci&oacute;n agr&iacute;cola" data-en="Universidad San Carlos &mdash; Research and agricultural training agreement">Universidad San Carlos &mdash; Convenio de investigaci&oacute;n y formaci&oacute;n agr&iacute;cola</span>
+      <div class="credentials fade-up" id="reconocimientos">
+        <h2 class="credentials-heading" data-es="Reconocimientos y alianzas" data-en="Recognition and partnerships">Reconocimientos y alianzas</h2>
+        <div class="credentials-grid">
+          <div class="credential-item">
+            <img src="/photos/marca-pais-certificate-digital.jpg" alt="Marca País Paraguay">
+            <div class="credential-copy">
+              <h3 class="credential-title"><a href="https://www.rediex.gov.py/paraguay-fortalece-su-marca-pais-con-la-entrega-de-licencias-a-empresas-paraguayas/" target="_blank" rel="noopener noreferrer" data-en="Marca País Paraguay" data-es="Marca País Paraguay">Marca País Paraguay</a></h3>
+              <p class="credential-desc" data-es="Licencia de uso del sello Marca País otorgada en 2025." data-en="Licensed in 2025 to use Paraguay’s national brand seal.">Licencia de uso del sello Marca País otorgada en 2025.</p>
+            </div>
+          </div>
+          <div class="credential-item">
+            <img src="/photos/premio-ahk-ceremony.jpeg" alt="Premio AHK 2025">
+            <div class="credential-copy">
+              <h3 class="credential-title"><a href="https://www.linkedin.com/pulse/hidrobio-hace-historia-en-los-premios-ahk-hidrobio-vb2jf/" target="_blank" rel="noopener noreferrer" data-en="AHK Awards" data-es="Premios AHK">Premios AHK</a></h3>
+              <p class="credential-desc" data-es="Primer puesto en Responsabilidad Ambiental Corporativa y segundo puesto en Emprendimiento Sostenible en la edición Sostenibilidad 2025." data-en="Awarded first place in Corporate Environmental Responsibility and second place in Sustainable Entrepreneurship at the 2025 AHK Paraguay Sustainability Awards.">Primer puesto en Responsabilidad Ambiental Corporativa y segundo puesto en Emprendimiento Sostenible en la edición Sostenibilidad 2025.</p>
+            </div>
+          </div>
+          <div class="credential-item">
+            <img src="/photos/sello-verde-ceremony.jpg" alt="Sello Verde Paraguay">
+            <div class="credential-copy">
+              <h3 class="credential-title"><a href="https://www.linkedin.com/pulse/hidrobio-obtiene-el-sello-verde-paraguay-por-su-liderazgo-en-ezxlf/" target="_blank" rel="noopener noreferrer" data-en="Sello Verde" data-es="Sello Verde">Sello Verde</a></h3>
+              <p class="credential-desc" data-es="Reconocimiento de la UIP, en el marco de AL-INVEST Verde, por medir la huella de carbono e implementar acciones de mitigación." data-en="Recognized by the Paraguayan Industrial Union (UIP) through AL-INVEST Verde for measuring our carbon footprint and taking steps to reduce emissions.">Reconocimiento de la UIP, en el marco de AL-INVEST Verde, por medir la huella de carbono e implementar acciones de mitigación.</p>
+            </div>
+          </div>
+          <div class="credential-item">
+            <img src="/photos/convenio-usc.jpg" alt="Universidad San Carlos">
+            <div class="credential-copy">
+              <h3 class="credential-title"><a href="https://www.linkedin.com/pulse/hidrobio-y-la-universidad-san-carlos-unen-fuerzas-para-transformar-hhelf/" target="_blank" rel="noopener noreferrer" data-en="Institutional cooperation" data-es="Cooperación institucional">Cooperación institucional</a></h3>
+              <p class="credential-desc" data-es="Convenio firmado con la Universidad San Carlos de Paraguay." data-en="Cooperation agreement signed with San Carlos University in Paraguay.">Convenio firmado con la Universidad San Carlos de Paraguay.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1556,26 +1534,8 @@
           <p data-es="Lanzada en noviembre de 2024, la Academia de HidroBio nace para acercar la agricultura hidrop&oacute;nica sostenible a quienes quieren transformar la manera de producir alimentos. A trav&eacute;s de cursos presenciales y en l&iacute;nea, productores y entusiastas de la agricultura aprenden de la mano de expertos reconocidos y llevan la teor&iacute;a a la pr&aacute;ctica. Las experiencias formativas tambi&eacute;n pueden incluir visitas a la finca de HidroBio, donde los participantes pueden conocer de primera mano la horticultura de precisi&oacute;n en acci&oacute;n." data-en="Launched in November 2024, HidroBio Academy was created to make sustainable hydroponic farming more accessible to those looking to transform the way we grow food. Through in-person and online courses, growers and agriculture enthusiasts learn from industry experts and put theory into practice. Training experiences may also include visits to the HidroBio farm, where participants can see precision horticulture in action.">Lanzada en noviembre de 2024, la Academia de HidroBio nace para acercar la agricultura hidropónica sostenible a quienes quieren transformar la manera de producir alimentos. A través de cursos presenciales y en línea, productores y entusiastas de la agricultura aprenden de la mano de expertos reconocidos y llevan la teoría a la práctica. Las experiencias formativas también pueden incluir visitas a la finca de HidroBio, donde los participantes pueden conocer de primera mano la horticultura de precisión en acción.</p>
           <p data-es="La Academia tambi&eacute;n abre sus puertas a grupos universitarios de Agronom&iacute;a y carreras afines, con visitas guiadas a nuestros invernaderos. Un espacio para conocer de cerca c&oacute;mo la tecnolog&iacute;a, el conocimiento y la innovaci&oacute;n se integran para hacer posible una producci&oacute;n m&aacute;s eficiente y sostenible." data-en="The Academy also welcomes university groups from agronomy and related programs for guided tours of our greenhouses. These visits offer a firsthand look at how technology, knowledge, and innovation come together to enable more efficient and sustainable food production.">La Academia también abre sus puertas a grupos universitarios de Agronomía y carreras afines, con visitas guiadas a nuestros invernaderos. Un espacio para conocer de cerca cómo la tecnología, el conocimiento y la innovación se integran para hacer posible una producción más eficiente y sostenible.</p>
 
-          <div class="instructor-row">
-            <div class="instructor">
-              <img src="/photos/maxi.jpg" alt="Maximiliano Samaniego">
-              <div>
-                <div class="instructor-name">Maximiliano Samaniego</div>
-                <div class="instructor-role" data-es="Ingeniero Agr&oacute;nomo" data-en="Agricultural Engineer">Ingeniero Agrónomo</div>
-              </div>
-            </div>
-            <div class="instructor">
-              <img src="/photos/wilson.jpg" alt="Wilson Sánchez">
-              <div>
-                <div class="instructor-name">Wilson Sánchez</div>
-                <div class="instructor-role" data-es="Ingeniero Agr&oacute;nomo" data-en="Agricultural Engineer">Ingeniero Agrónomo</div>
-              </div>
-            </div>
-          </div>
-
           <div class="academy-cta">
             <a href="/academia" class="btn-primary" data-es="Conoc&eacute; la Academia" data-en="Visit the Academy">Conocé la Academia</a>
-            <a href="mailto:academia@hidrobio.com.py" class="btn-outline" data-es="Escribinos" data-en="Get in touch">Escribinos</a>
           </div>
         </div>
       </div>
@@ -1586,27 +1546,8 @@
   <section class="press" id="prensa">
     <div class="container">
       <div class="press-header fade-up">
-        <p class="section-label" data-es="Prensa y Reconocimientos" data-en="Press and Awards">Prensa y Reconocimientos</p>
+        <p class="section-label" data-es="Prensa" data-en="Press">Prensa</p>
         <h2 class="section-title" data-es="Lo que dicen de nosotros" data-en="What they say about us">Lo que dicen de nosotros</h2>
-      </div>
-
-      <div class="awards-row fade-up">
-        <div class="award-item">
-          <div class="award-icon" style="background: #fff3cd; color: #b8860b;">🏆</div>
-          <span class="award-name" data-es="C&aacute;mara Alemana (AHK)<br>1er Puesto Sostenibilidad 2025" data-en="German Chamber (AHK)<br>1st Place Sustainability 2025">C&aacute;mara Alemana (AHK)<br>1er Puesto Sostenibilidad 2025</span>
-        </div>
-        <div class="award-item">
-          <div class="award-icon" style="background: #dbeafe; color: #1d4ed8;">🇵🇾</div>
-          <span class="award-name" data-es="Marca Pa&iacute;s<br>Calidad certificada REDIEX" data-en="Marca Pa&iacute;s<br>REDIEX certified quality">Marca Pa&iacute;s<br>Calidad certificada REDIEX</span>
-        </div>
-        <div class="award-item">
-          <div class="award-icon" style="background: #d1fae5; color: #059669;">🌿</div>
-          <span class="award-name" data-es="Sello Verde<br>Uni&oacute;n Industrial Paraguaya" data-en="Sello Verde<br>Paraguayan Industrial Union">Sello Verde<br>Uni&oacute;n Industrial Paraguaya</span>
-        </div>
-        <div class="award-item">
-          <div class="award-icon" style="background: #ede9fe; color: #7c3aed;">🎓</div>
-          <span class="award-name" data-es="Universidad San Carlos<br>Convenio de formaci&oacute;n agr&iacute;cola" data-en="Universidad San Carlos<br>Agricultural training agreement">Universidad San Carlos<br>Convenio de formaci&oacute;n agr&iacute;cola</span>
-        </div>
       </div>
 
       <div class="press-scroll">
