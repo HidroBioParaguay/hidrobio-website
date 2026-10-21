@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/css/intlTelInput.css">
 <style>
   :root {
     --green-primary: #1a7a4c;
@@ -49,7 +50,7 @@
       url('../public/photos/hero-greenhouse.jpg');
     background-size: cover;
     background-position: center;
-    padding: 56px 24px 80px;
+    padding: 64px 24px 88px;
     color: var(--white);
     text-align: center;
   }
@@ -60,30 +61,32 @@
   }
 
   .form-header__logo {
-    height: 56px;
-    margin-bottom: 32px;
+    height: 48px;
+    margin-bottom: 28px;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
   }
 
   .form-header__title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 700;
+    font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+    font-weight: 600;
     letter-spacing: -0.02em;
-    margin-bottom: 12px;
+    line-height: 1.15;
+    margin-bottom: 10px;
   }
 
   .form-header__subtitle {
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-size: clamp(1rem, 2vw, 1.0625rem);
     font-weight: 400;
-    color: rgba(255,255,255,0.88);
-    max-width: 520px;
+    color: rgba(255,255,255,0.82);
     margin: 0 auto;
+    line-height: 1.45;
+    white-space: nowrap;
   }
 
   /* ──────────────── FORM CONTAINER ──────────────── */
   .form-wrapper {
     max-width: 720px;
-    margin: -48px auto 64px;
+    margin: -56px auto 64px;
     padding: 0 16px;
     position: relative;
     z-index: 2;
@@ -199,6 +202,10 @@
 
   .field__textarea { resize: vertical; min-height: 88px; }
 
+  /* International phone input (auto country detection) */
+  .iti { width: 100%; }
+  .iti__tel-input { width: 100%; }
+
   .field__hint {
     font-size: 0.75rem;
     color: var(--gray-500);
@@ -281,15 +288,23 @@
 
   .terms-details summary:hover { background: var(--green-light); }
 
+  .terms-intro {
+    padding: 4px 20px 8px 20px;
+    color: var(--gray-700);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
   .terms-list {
-    padding: 4px 32px 16px 40px;
+    padding: 4px 24px 16px 36px;
     margin: 0;
     color: var(--gray-700);
     font-size: 0.8125rem;
     line-height: 1.6;
   }
 
-  .terms-list li { padding: 4px 0; }
+  .terms-list li { padding: 6px 0; }
+  .terms-list li strong { color: var(--navy); }
 
   .terms-checkbox {
     display: flex;
@@ -360,9 +375,11 @@
 
   /* ──────────────── MOBILE ──────────────── */
   @media (max-width: 640px) {
-    .form-header { padding: 36px 20px 64px; }
-    .form-header__logo { height: 44px; margin-bottom: 24px; }
-    .form-wrapper { margin-top: -36px; padding: 0 12px; }
+    .form-header { padding: 44px 20px 72px; }
+    .form-header__logo { height: 40px; margin-bottom: 22px; }
+    .form-header__title { font-size: 1.5rem; }
+    .form-header__subtitle { white-space: normal; max-width: 300px; }
+    .form-wrapper { margin-top: -44px; padding: 0 12px; }
     .form-card { border-radius: 12px; }
     .form-intro,
     .form-section,
@@ -423,7 +440,7 @@
         </div>
         <div class="field">
           <label class="field__label">Teléfono <span class="field__required">*</span></label>
-          <input type="tel" class="field__input" placeholder="+595 9XX XXX XXX">
+          <input id="phone" type="tel" class="field__input" placeholder="Número de teléfono">
         </div>
         <div class="field field--full">
           <label class="field__label">Empresa o Institución <span class="field__required">*</span></label>
@@ -534,7 +551,7 @@
 
       <div class="field-grid field-grid--full">
         <div class="field">
-          <label class="field__label">¿Algún requerimiento especial? (movilidad reducida, alergias, otro)</label>
+          <label class="field__label">¿Algún requerimiento especial?</label>
           <textarea class="field__textarea" placeholder="Contanos para garantizar que tu visita sea cómoda y segura"></textarea>
         </div>
       </div>
@@ -570,24 +587,25 @@
     <!-- ── Términos + Privacidad ── -->
     <div class="terms-section">
       <details class="terms-details">
-        <summary>Ver términos y condiciones de visita</summary>
+        <summary>Ver condiciones para visitas a HidroBio</summary>
+        <p class="terms-intro">En HidroBio nos entusiasma abrirte las puertas de nuestro invernadero para que vivas de cerca la producción hidropónica y la agricultura sostenible. Por motivos de bioseguridad, algunas áreas son de acceso restringido. Para que tu visita sea segura, inspiradora y enriquecedora, te pedimos seguir estas sencillas condiciones:</p>
         <ol class="terms-list">
-          <li>Las visitas requieren reserva previa confirmada por HidroBio.</li>
-          <li>Las visitas educativas requieren un mínimo de 12 personas.</li>
-          <li>Por bioseguridad, se entregará indumentaria especial al ingreso.</li>
-          <li>No se permite el ingreso de alimentos ni bebidas al área productiva.</li>
-          <li>La duración estimada del recorrido es de 1 a 3 horas.</li>
-          <li>La fotografía con fines no comerciales está permitida; el uso comercial requiere autorización previa.</li>
-          <li>El visitante es responsable del cumplimiento de las normas durante la visita.</li>
-          <li>Las cancelaciones deben informarse con al menos 24 horas de anticipación.</li>
-          <li>HidroBio se reserva el derecho de admisión.</li>
+          <li><strong>Reservas y confirmación.</strong> Las visitas se realizan únicamente con reserva previa. Una vez recibida tu solicitud, nuestro equipo la evaluará y, si se aprueba, te enviaremos un correo de confirmación con todos los detalles. HidroBio se reserva el derecho de rechazar cualquier solicitud de visita sin necesidad de dar explicaciones.</li>
+          <li><strong>Visitas educativas.</strong> Las visitas de instituciones educativas deben ser organizadas y solicitadas por la propia institución, ya que están destinadas exclusivamente a grupos académicos y no a estudiantes de manera individual o privada. El grupo debe contar con un mínimo de 12 personas; las solicitudes con un número menor serán rechazadas automáticamente.</li>
+          <li><strong>Normas de bioseguridad y convivencia.</strong> Tu seguridad es nuestra prioridad. Durante la visita, es necesario cumplir normas básicas de higiene y seguridad (uso de calzado cerrado, desinfección de manos, etc.) y permanecer solo en las áreas autorizadas. Te pedimos seguir las indicaciones del equipo, cuidar las instalaciones y mantener un trato respetuoso hacia todos.</li>
+          <li><strong>Alimentos y bebidas.</strong> Para proteger la producción, no se permite ingresar alimentos o bebidas al invernadero. Podrás disfrutar de tus snacks en las áreas designadas antes o después del recorrido.</li>
+          <li><strong>Duración y recorrido.</strong> Cada visita dura entre 1 y 3 horas, según el grupo y los objetivos. El recorrido incluye únicamente las zonas habilitadas y siempre estará acompañado por un miembro de HidroBio, quien responderá tus preguntas durante el trayecto.</li>
+          <li><strong>Registro fotográfico.</strong> Podrás tomar fotos personales en las áreas autorizadas, siempre que no interfieran con la visita. Para fines académicos, de prensa o comerciales, se requiere autorización previa.</li>
+          <li><strong>Responsabilidad compartida.</strong> Al participar, aceptás estas condiciones y comprendés que cada visitante es responsable de su conducta y del cumplimiento de las normas de bioseguridad. Nuestro compromiso es ofrecerte una experiencia única en las áreas habilitadas del invernadero.</li>
+          <li><strong>Cambios o cancelaciones.</strong> Si no podés asistir, te pedimos avisarnos con al menos 24 horas de anticipación. Esto nos ayuda a reorganizar nuestras actividades y aprovechar mejor el tiempo y los recursos preparados para tu visita.</li>
+          <li><strong>Derecho de admisión y permanencia.</strong> Para garantizar una experiencia positiva para todos, HidroBio se reserva el derecho de interrumpir la visita si se incumplen normas de seguridad o se intenta acceder a áreas restringidas.</li>
         </ol>
       </details>
 
       <label class="terms-checkbox">
         <input type="checkbox">
         <span class="terms-checkbox__text">
-          Acepto los términos y condiciones de visita y la
+          Acepto las condiciones de visita y la
           <a href="https://www.hidrobio.com.py/privacidad" target="_blank" rel="noopener">política de privacidad</a> de HidroBio.
           Tus datos son usados únicamente para coordinar la visita y no se comparten con terceros.
         </span>
@@ -604,12 +622,29 @@
         </svg>
       </button>
       <p class="form-footer-note">
-        Recibirás un email de confirmación en 1-2 días hábiles.
+        Recibirás un correo de confirmación en 1-2 días hábiles.
       </p>
     </div>
 
   </div>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/js/intlTelInputWithUtils.min.js"></script>
+<script>
+  var phoneInput = document.querySelector('#phone');
+  if (phoneInput && window.intlTelInput) {
+    window.intlTelInput(phoneInput, {
+      initialCountry: 'auto',
+      separateDialCode: true,
+      geoIpLookup: function (callback) {
+        fetch('https://ipapi.co/json/')
+          .then(function (res) { return res.json(); })
+          .then(function (data) { callback(data && data.country_code ? data.country_code : 'py'); })
+          .catch(function () { callback('py'); });
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
