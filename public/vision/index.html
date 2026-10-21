@@ -321,6 +321,56 @@
       font-style: italic;
     }
 
+    /* ---- Construction photo ---- */
+    .photo-break--construction {
+      height: clamp(560px, 56vw, 900px);
+    }
+
+    .photo-break--construction img {
+      object-position: 50% 35%;
+      filter: brightness(1.08);
+    }
+
+    .photo-break--construction .photo-break-overlay {
+      background:
+        radial-gradient(ellipse at 82% 16%, rgba(10, 15, 13, 0.72) 0%, rgba(10, 15, 13, 0.34) 24%, transparent 52%),
+        linear-gradient(180deg, rgba(10, 15, 13, 0.35) 0%, transparent 16%, transparent 76%, var(--dark) 100%);
+    }
+
+    .photo-break--construction .photo-break-text {
+      top: 10%;
+      bottom: auto;
+      left: auto;
+      right: max(48px, calc((100vw - 1400px) / 2));
+      max-width: 560px;
+      text-align: right;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    @media (max-width: 640px) {
+      .photo-break--construction {
+        height: 560px;
+      }
+
+      .photo-break--construction img {
+        object-position: 58% 50%;
+      }
+
+      .photo-break--construction .photo-break-overlay {
+        background:
+          radial-gradient(ellipse at 50% 12%, rgba(10, 15, 13, 0.72) 0%, rgba(10, 15, 13, 0.30) 25%, transparent 56%),
+          linear-gradient(180deg, rgba(10, 15, 13, 0.25) 0%, transparent 25%, transparent 76%, var(--dark) 100%);
+      }
+
+      .photo-break--construction .photo-break-text {
+        top: 8%;
+        left: 24px;
+        right: 24px;
+        max-width: none;
+        text-align: center;
+      }
+    }
+
     /* ---- Stats Section ---- */
     .stats {
       padding: 120px 0;
@@ -1075,8 +1125,8 @@
   </section>
 
   <!-- ======== PHOTO BREAK 4 ======== -->
-  <div class="photo-break">
-    <img src="/photos/construction.jpg" alt="AgroPark under construction" loading="lazy">
+  <div class="photo-break photo-break--construction">
+    <img src="/photos/agropark-construction-023.webp" alt="Aerial view of HidroBio AgroPark greenhouses under construction at sunset" width="2048" height="1536" loading="lazy" decoding="async">
     <div class="photo-break-overlay"></div>
     <div class="photo-break-text reveal">
       <h3 data-en="Being <em>built</em>.<br>Right <em>now</em>." data-es="En <em>construcción</em>.<br>Ahora <em>mismo</em>.">Being <em>built</em>.<br>Right <em>now</em>.</h3>
