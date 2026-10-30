@@ -1,0 +1,33 @@
+name: Enable auto-merge for Martha's pull requests
+
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, reopened, ready_for_review, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: auto-merge-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  enable-auto-merge:
+    if: >-
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.user.login == 'marpampli' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      # This privileged workflow never checks out or executes pull request code.
+      # GitHub still enforces required reviews and any required status checks.
+      - name: Enable native auto-merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: gh pr merge "$PR_NUMBER" --repo "$GH_REPO" --auto --merge --match-head-commit "$HEAD_SHA"
